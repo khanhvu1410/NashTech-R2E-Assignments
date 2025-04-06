@@ -1,0 +1,59 @@
+----- HTTP Request Log -----
+Schema: http
+Host: localhost:5110
+Path: /Cars/
+Query String: 
+Request Body: {
+    "id": 5,
+    "make": "BMW",
+    "model": "XM",
+    "year": 2025
+}
+Timestamp: 4/1/2025 3:54:23 PM
+----------------------------
+
+----- HTTP Request Log -----
+Schema: http
+Host: localhost:5110
+Path: /Cars/GetAllCars
+Query String: 
+Request Body: 
+Timestamp: 4/1/2025 3:54:29 PM
+----------------------------
+
+----- HTTP Request Log -----
+Schema: http
+Host: localhost:5110
+Path: /Cars/2
+Query String: 
+Request Body: 
+Timestamp: 4/1/2025 3:54:35 PM
+----------------------------
+
+----- HTTP Request Log -----
+Schema: http
+Host: localhost:5110
+Path: /Cars/FilterByModel
+Query String: ?model=test
+Request Body: 
+Timestamp: 4/1/2025 3:55:09 PM
+----------------------------
+
+----- HTTP Request Log -----
+Schema: http
+Host: localhost:5110
+Path: /Cars/2
+Query String: 
+Request Body: 
+Timestamp: 4/1/2025 3:55:13 PM
+----------------------------
+
+----- HTTP Request Log -----
+Schema: https
+Host: localhost:7199
+Path: /
+Query String: 
+Request Body: 
+Timestamp: 4/6/2025 3:18:10 PM
+----------------------------
+
