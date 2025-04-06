@@ -39,7 +39,7 @@ cd MiddlewareAssignment/MiddlewareAssignment
 ```sh
 cd MvcAssignment/MvcAssignment.Web
 ```
-- For ASP.NET Core Web API Assignment:
+- For ToDo API Assignment:
 ```sh
 cd ToDoApiAssignment/Presentation/ToDoApiAssignment.Api
 ```
