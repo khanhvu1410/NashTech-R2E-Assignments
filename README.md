@@ -41,7 +41,7 @@ cd MvcAssignment/MvcAssignment.Web
 ```
 - For ASP.NET Core Web API Assignment:
 ```sh
-cd ToDoApiAssignment/ToDoApiAssignment.Api
+cd ToDoApiAssignment/Presentation/ToDoApiAssignment.Api
 ```
 
 ### Step 3: Run the application 
