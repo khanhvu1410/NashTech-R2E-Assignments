@@ -9,7 +9,58 @@ This repository contains a collection of assignments completed as part of the Ro
 - ASP.NET Core MVC
 - ASP.NET Core Web API
 
----
+## Architecture
+
+### ASP.NET Core MVC Assignment (N-tier)
+```bash
+MvcAssignment
+├───MvcAssignment.Business
+│   ├───Interfaces
+│   └───Services
+├───MvcAssignment.Data
+│   ├───Interfaces
+│   ├───Models
+│   └───Repositories
+├───MvcAssignment.Shared
+│   ├───DTOs
+│   └───Enums
+└───MvcAssignment.Web
+    ├───Controllers
+    ├───Enums
+    ├───Models
+    ├───Views
+    │   ├───Home
+    │   ├───Rookies
+    │   └───Shared
+    └───wwwroot
+        ├───css
+        ├───js
+        └───lib
+```
+
+### ToDo API Assignment (Clean Architecture)
+```bash
+ToDoApiAssignment
+├───Core
+│   ├───ToDoApiAssignment.Application
+│   │   ├───DTOs
+│   │   ├───Interfaces
+│   │   ├───Mappings
+│   │   └───Services
+│   └───ToDoApiAssignment.Domain
+│       ├───Entities
+│       └───Interfaces
+├───Infrastructure
+│   ├───ToDoApiAssignment.Infrastructure
+│   └───ToDoApiAssignment.Persistence
+│       ├───Data
+│       ├───Interfaces
+│       └───Repositories
+└───Presentation
+    └───ToDoApiAssignment.Api
+        ├───Controllers
+        └───Filters
+```
 
 ## How to run the assignments
 
