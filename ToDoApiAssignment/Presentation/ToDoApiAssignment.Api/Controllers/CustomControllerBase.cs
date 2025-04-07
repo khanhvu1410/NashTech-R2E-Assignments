@@ -6,27 +6,27 @@ namespace ToDoApiAssignment.Api.Controllers
     {
         protected ActionResult SafeExecute<T>(Func<T> action)
         {
-            try
+            return ExecuteWithErrorHandling(() =>
             {
                 var result = action();
                 return Ok(result);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(new { message = ex.Message });  
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = ex.Message });
-            }
+            });
         }
 
         protected IActionResult SafeDeleteExecute(Action action)
         {
-            try
+            return ExecuteWithErrorHandling(() =>
             {
                 action();
                 return NoContent();
+            });
+        }
+
+        private ActionResult ExecuteWithErrorHandling(Func<ActionResult> action)
+        {
+            try
+            {
+                return action();
             }
             catch (KeyNotFoundException ex)
             {

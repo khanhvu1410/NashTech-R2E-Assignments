@@ -46,14 +46,14 @@ namespace ToDoApiAssignment.Api.Controllers
             return SafeDeleteExecute(() => _toDoItemService.DeleteItem(id));
         }
 
-        [HttpPost("[action]")]
+        [HttpPost("batch")]
         public ActionResult<IEnumerable<ToDoItemDTO>> CreateMultipleItems(IEnumerable<ToDoItemToCreateDTO> items)
         {
             var createdItems = _toDoItemService.CreateMultipleItems(items);
             return Ok(createdItems);
         }
 
-        [HttpDelete("[action]")]
+        [HttpDelete("batch")]
         public IActionResult DeleteMultipleItems(IEnumerable<int> ids)
         {
             return SafeDeleteExecute(() => _toDoItemService.DeleteMultipleItems(ids));
