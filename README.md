@@ -62,6 +62,10 @@ ToDoApiAssignment
         └───Filters
 ```
 
+## Prerequisites
+- .NET 8.0 SDK
+- Visual Studio 2022 or Visual Studio Code
+
 ## How to run the assignments
 
 ### Step 1: Clone the repository  
