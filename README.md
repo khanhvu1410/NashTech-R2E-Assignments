@@ -62,6 +62,30 @@ ToDoApiAssignment
         └───Filters
 ```
 
+### Person API Assignment (Clean Architecture)
+```bash
+PersonApiAssignment
+├───Core
+│   ├───PersonApiAssignment.Application
+│   │   ├───DTOs
+│   │   ├───Interfaces
+│   │   ├───Mappings
+│   │   └───Services
+│   └───PersonApiAssignment.Domain
+│       ├───Entities
+│       ├───Enums
+│       └───Interfaces
+├───Infrastructure
+│   └───PersonApiAssignment.Persistence
+│       ├───Data
+│       ├───Interfaces
+│       └───Repositories
+└───Presentation
+    └───PersonApiAssignment.Api
+        ├───Controllers
+        └───Filters
+```
+
 ## Prerequisites
 - .NET 8.0 SDK
 - Visual Studio 2022 or Visual Studio Code
@@ -97,6 +121,10 @@ cd MvcAssignment/MvcAssignment.Web
 - For ToDo API Assignment:
 ```sh
 cd ToDoApiAssignment/Presentation/ToDoApiAssignment.Api
+```
+- For Person API Assignment:
+```sh
+cd PersonApiAssignment/Presentation/PersonApiAssignment.Api
 ```
 
 ### Step 3: Run the application 
