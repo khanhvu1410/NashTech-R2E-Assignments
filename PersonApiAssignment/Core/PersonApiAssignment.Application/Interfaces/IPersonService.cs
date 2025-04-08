@@ -9,7 +9,7 @@ namespace PersonApiAssignment.Application.Interfaces
 
         public PersonDTO UpdatePerson(PersonDTO personDto);
 
-        public IEnumerable<PersonDTO> GetAllPersons(string? firstName, string? lastName, Gender? gender, string? birthPlace);
+        public IEnumerable<PersonDTO> GetAllPersons(string? name, Gender? gender, string? birthPlace);
 
         public PersonDTO GetPersonById(int id); 
 
