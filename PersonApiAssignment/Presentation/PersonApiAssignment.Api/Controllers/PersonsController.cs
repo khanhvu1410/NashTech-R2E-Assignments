@@ -17,9 +17,9 @@ namespace PersonApiAssignment.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<PersonDTO>> GetAllPersons(string? firstName = null, string? lastName = null, Gender? gender = null, string? birthPlace = null)
+        public ActionResult<IEnumerable<PersonDTO>> GetAllPersons(string? name = null, Gender? gender = null, string? birthPlace = null)
         {
-            return SafeExecute(() => _personService.GetAllPersons(firstName, lastName, gender, birthPlace));
+            return SafeExecute(() => _personService.GetAllPersons(name, gender, birthPlace));
         }
 
         [HttpGet("{id}")]

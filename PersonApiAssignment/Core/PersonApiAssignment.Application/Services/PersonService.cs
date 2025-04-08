@@ -38,18 +38,13 @@ namespace PersonApiAssignment.Application.Services
             _personRepository.DeletePerson(id);
         }
 
-        public IEnumerable<PersonDTO> GetAllPersons(string? firstName = null, string? lastName = null, Gender? gender = null, string? birthPlace = null)
+        public IEnumerable<PersonDTO> GetAllPersons(string? name = null, Gender? gender = null, string? birthPlace = null)
         {
             var persons = _personRepository.GetAllPersons().ToList();
 
-            if (firstName != null)
+            if (name != null)
             {
-                persons = persons.Where(p => p.FirstName.Equals(firstName, StringComparison.OrdinalIgnoreCase)).ToList();
-            }
-
-            if (lastName != null)
-            {
-                persons = persons.Where(p => p.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase)).ToList();
+                persons = persons.Where(p => $"{p.FirstName} {p.LastName}".Equals(name, StringComparison.OrdinalIgnoreCase)).ToList(); 
             }
 
             if (gender != null)
