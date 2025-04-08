@@ -27,7 +27,7 @@ namespace PersonApiAssignment.Application.Mappings
                 LastName = personDto.LastName ?? string.Empty,
                 DateOfBirth = personDto.DateOfBirth,
                 Gender = personDto.Gender,
-                BirthPlace = personDto.BirthPlace,
+                BirthPlace = personDto.BirthPlace ?? string.Empty,
                 UpdatedAt = DateTime.Now
             };
         }
@@ -41,7 +41,7 @@ namespace PersonApiAssignment.Application.Mappings
                 LastName = personDto.LastName ?? string.Empty,
                 DateOfBirth = personDto.DateOfBirth,
                 Gender = personDto.Gender,
-                BirthPlace = personDto.BirthPlace,
+                BirthPlace = personDto.BirthPlace ?? string.Empty,
                 CreatedAt = DateTime.Now
             };
         }

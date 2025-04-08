@@ -19,7 +19,7 @@ namespace PersonApiAssignment.Application.Services
         {
             var persons = _personRepository.GetAllPersons().ToList();
 
-            var id = persons.Count == 0 ? 1 : persons.Max(i => i.Id) + 1;
+            var id = persons.Count == 0 ? 1 : persons.Max(p => p.Id) + 1;
 
             var person = _personRepository.CreatePerson(personDto.ToPerson(id));
 
@@ -62,7 +62,7 @@ namespace PersonApiAssignment.Application.Services
                 throw new KeyNotFoundException("No person found.");
             }
 
-            return persons.Select(i => i.ToPersonDTO());
+            return persons.Select(p => p.ToPersonDTO());
         }
 
         public PersonDTO GetPersonById(int id)
