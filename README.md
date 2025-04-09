@@ -106,7 +106,7 @@ cd PersonApiAssignment/Presentation/PersonApiAssignment.Api
 ```sh
 cd EfCoreAssignmentDay1
 ```
-- Change connection string in appsetting.json:
+- Change connection string in appsettings.json:
 ```json
 "ConnectionStrings": {
   "EFCoreDBConnection": "Server=SQLServerName;Database=EfCoreAssignment;Trusted_Connection=True;TrustServerCertificate=True;"
