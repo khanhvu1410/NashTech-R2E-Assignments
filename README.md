@@ -74,6 +74,10 @@ Open a terminal or command prompt and run the following command:
 ```sh
 git clone https://github.com/khanhvu1410/NashTech-R2E-Assignments.git
 ```
+Navigate to the root folder:
+```sh
+cd NashTech-R2E-Assignments
+```
 
 ### Step 2: Navigate to the desired assignment
 **For C# Fundamentals Assignment Day 1:**
@@ -106,10 +110,17 @@ cd PersonApiAssignment/Presentation/PersonApiAssignment.Api
 ```sh
 cd EfCoreAssignmentDay1
 ```
+
+### Step 3: Run the application 
+Inside the respective folder, execute:
+```sh
+dotnet run
+```
+**For EF Core Assignment Day 1:**
 - Change connection string in appsettings.json:
 ```json
 "ConnectionStrings": {
-  "EFCoreDBConnection": "Server=SQLServerName;Database=EfCoreAssignment;Trusted_Connection=True;TrustServerCertificate=True;"
+  "EFCoreDBConnection": "Server=YourSQLServerName;Database=EfCoreAssignment;Trusted_Connection=True;TrustServerCertificate=True;"
 }
 ```
 - Add a migration:
@@ -119,10 +130,4 @@ dotnet ef migrations add InitialCreate --project Infrastructure/EfCoreAssignment
 - Apply the migration to the database:
 ```sh
 dotnet ef database update --project Infrastructure/EfCoreAssignmentDay1.Persistence --startup-project Presentation/EfCoreAssignmentDay1.Api
-```
-
-### Step 3: Run the application 
-Inside the respective folder, execute:
-```sh
-dotnet run
 ```
