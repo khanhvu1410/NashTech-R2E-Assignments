@@ -8,10 +8,11 @@ This repository contains a collection of assignments completed as part of the Ro
 - ASP.NET Core Fundamentals
 - ASP.NET Core MVC
 - ASP.NET Core Web API
+- Entity Framework Core
 
-## Architecture
+## Architectures used in assignments
 
-### ASP.NET Core MVC Assignment (N-tier)
+### N-tier: ASP.NET Core MVC Assignment
 ```bash
 MvcAssignment
 ├───MvcAssignment.Business
@@ -33,36 +34,12 @@ MvcAssignment
     │   ├───Rookies
     │   └───Shared
     └───wwwroot
-        ├───css
-        ├───js
-        └───lib
 ```
 
-### ToDo API Assignment (Clean Architecture)
-```bash
-ToDoApiAssignment
-├───Core
-│   ├───ToDoApiAssignment.Application
-│   │   ├───DTOs
-│   │   ├───Interfaces
-│   │   ├───Mappings
-│   │   └───Services
-│   └───ToDoApiAssignment.Domain
-│       ├───Entities
-│       └───Interfaces
-├───Infrastructure
-│   ├───ToDoApiAssignment.Infrastructure
-│   └───ToDoApiAssignment.Persistence
-│       ├───Data
-│       ├───Interfaces
-│       └───Repositories
-└───Presentation
-    └───ToDoApiAssignment.Api
-        ├───Controllers
-        └───Filters
-```
-
-### Person API Assignment (Clean Architecture)
+### Clean Architecture:
+- ToDo API Assignment
+- Person API Assignment
+- EF Core Assignment Day 1
 ```bash
 PersonApiAssignment
 ├───Core
@@ -99,32 +76,49 @@ git clone https://github.com/khanhvu1410/NashTech-R2E-Assignments.git
 ```
 
 ### Step 2: Navigate to the desired assignment
-Depending on which assignment you want to run:
-- For C# Fundamentals Assignment Day 1:
+**For C# Fundamentals Assignment Day 1:**
 ```sh
 cd AssignmentDay1/AssignmentDay1
 ```
-- For C# Fundamentals Assignment Day 2:
+**For C# Fundamentals Assignment Day 2:**
 ```sh
 cd AssignmentDay2/AssignmentDay2
 ```
-- For ASP.NET Core Fundamentals Middleware Assignment:
-    - Ensure that you provide a valid endpoint to process HTTP requests and generate logs in logs.txt
-    - Example: http://localhost:5110/Cars/FilterByModel?model=Mustang
+**For ASP.NET Core Fundamentals Middleware Assignment:**
+- Ensure that you provide a valid endpoint to process HTTP requests and generate logs in logs.txt
+- Example: http://localhost:5110/Cars/FilterByModel?model=Mustang
 ```sh
 cd MiddlewareAssignment/MiddlewareAssignment
 ```
-- For ASP.NET Core MVC Assignment:
+**For ASP.NET Core MVC Assignment:**
 ```sh
 cd MvcAssignment/MvcAssignment.Web
 ```
-- For ToDo API Assignment:
+**For ToDo API Assignment:**
 ```sh
 cd ToDoApiAssignment/Presentation/ToDoApiAssignment.Api
 ```
-- For Person API Assignment:
+**For Person API Assignment:**
 ```sh
 cd PersonApiAssignment/Presentation/PersonApiAssignment.Api
+```
+**For EF Core Assignment Day 1:**
+```sh
+cd EfCoreAssignmentDay1
+```
+- Change connection string in appsetting.json:
+```json
+"ConnectionStrings": {
+  "EFCoreDBConnection": "Server=SQLServerName;Database=EfCoreAssignment;Trusted_Connection=True;TrustServerCertificate=True;"
+}
+```
+- Add a migration:
+```sh
+dotnet ef migrations add InitialCreate --project Infrastructure/EfCoreAssignmentDay1.Persistence --startup-project Presentation/EfCoreAssignmentDay1.Api 
+```
+- Apply the migration to the database:
+```sh
+dotnet ef database update --project Infrastructure/EfCoreAssignmentDay1.Persistence --startup-project Presentation/EfCoreAssignmentDay1.Api
 ```
 
 ### Step 3: Run the application 
