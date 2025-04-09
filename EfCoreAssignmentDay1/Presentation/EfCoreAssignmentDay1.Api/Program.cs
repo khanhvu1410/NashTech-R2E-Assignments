@@ -12,8 +12,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<EmployeeDbContext>(options =>
 {
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("EFCoreDBConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("EFCoreDBConnection"));
 });
 
 var app = builder.Build();
