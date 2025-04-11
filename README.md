@@ -40,6 +40,7 @@ MvcAssignment
 - ToDo API Assignment
 - Person API Assignment
 - EF Core Assignment Day 1
+- EF Core Assignment Day 2
 ```bash
 PersonApiAssignment
 ├───Core
@@ -110,9 +111,27 @@ cd PersonApiAssignment/Presentation/PersonApiAssignment.Api
 ```sh
 cd EfCoreAssignmentDay1
 ```
+- Change connection string in appsettings.json:
+```json
+"ConnectionStrings": {
+  "EFCoreDBConnection": "Server=YourSQLServerName;Database=EfCoreAssignment;Trusted_Connection=True;TrustServerCertificate=True;"
+}
+```
+- Update database:
+```sh
+dotnet ef database update --project Infrastructure/EfCoreAssignmentDay1.Persistence --startup-project Presentation/EfCoreAssignmentDay1.Api
+```
 **For EF Core Assignment Day 2:**
 ```sh
-cd EfCoreAssignmentDay2/EfCoreAssignmentDay2.Api
+cd EfCoreAssignmentDay2
+```
+- Update database:
+```sh
+dotnet ef database update --project EfCoreAssignmentDay2.Persistence --startup-project EfCoreAssignmentDay2.Api
+```
+- To test the APIs:
+```sh
+cd EfCoreAssignmentDay2.Api
 ```
 
 ### Step 3: Run the application 
@@ -120,18 +139,4 @@ Inside the respective folder, execute:
 ```sh
 dotnet run
 ```
-**For EF Core Assignment Day 1 (2):**
-- Change connection string in appsettings.json:
-```json
-"ConnectionStrings": {
-  "EFCoreDBConnection": "Server=YourSQLServerName;Database=EfCoreAssignment;Trusted_Connection=True;TrustServerCertificate=True;"
-}
-```
-- Add a migration:
-```sh
-dotnet ef migrations add InitialCreate --project Infrastructure/EfCoreAssignmentDay1.Persistence --startup-project Presentation/EfCoreAssignmentDay1.Api 
-```
-- Apply the migration to the database:
-```sh
-dotnet ef database update --project Infrastructure/EfCoreAssignmentDay1.Persistence --startup-project Presentation/EfCoreAssignmentDay1.Api
-```
+
