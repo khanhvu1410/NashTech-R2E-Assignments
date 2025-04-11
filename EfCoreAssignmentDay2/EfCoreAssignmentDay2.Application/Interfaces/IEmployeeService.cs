@@ -14,10 +14,10 @@ namespace EfCoreAssignmentDay2.Application.Interfaces
 
         public Task DeleteEmployeeAsync(int id);
 
-        public Task<IEnumerable<object>> GetAllEmployeesWithDepartmentNames();
+        public Task<IEnumerable<object>> GetAllEmployeesWithDepartmentNamesAsync();
 
         public Task<IEnumerable<object>> GetAllEmployeesWithProjectsAsync();
 
-        public Task<IEnumerable<object>> GetAllEmployeesWithAndJoindedDateAsync();
+        public Task<IEnumerable<object>> GetAllEmployeesWithSalaryAndJoindedDateAsync();
     }
 }

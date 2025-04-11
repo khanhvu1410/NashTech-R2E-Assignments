@@ -4,8 +4,8 @@ namespace EfCoreAssignmentDay2.Domain.Interfaces
 {
     public interface IProjectEmployeeRepository : IBaseRepository<ProjectEmployee>
     {
-        Task<ProjectEmployee?> GetByIdsAsync(int projectId, int employeeId);
+        public Task<ProjectEmployee?> GetByIdAsync(int projectId, int employeeId);
 
-        Task DeleteAsync(int projectId, int employeeId);
+        public Task DeleteAsync(int projectId, int employeeId);
     }
 }

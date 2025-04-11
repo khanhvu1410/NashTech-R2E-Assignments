@@ -131,7 +131,7 @@ namespace EfCoreAssignmentDay2.Persistence.Migrations
                 values: new object[,]
                 {
                     { 1, 1, new DateTime(2022, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Alice" },
-                    { 2, 2, new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Bob" }
+                    { 2, 2, new DateTime(2024, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Bob" }
                 });
 
             migrationBuilder.InsertData(

@@ -76,7 +76,7 @@ namespace EfCoreAssignmentDay2.Api.Controllers
         [HttpGet("[action]")]
         public async Task<ActionResult<IEnumerable<object>>> GetAllEmployeesWithDepartmentNames()
         {
-            var employees = await _employeeService.GetAllEmployeesWithDepartmentNames();
+            var employees = await _employeeService.GetAllEmployeesWithDepartmentNamesAsync();
             return Ok(employees);
         }
 
@@ -88,9 +88,9 @@ namespace EfCoreAssignmentDay2.Api.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<ActionResult<IEnumerable<object>>> GetAllEmployeesWithAndJoindedDateAsync()
+        public async Task<ActionResult<IEnumerable<object>>> GetAllEmployeesWithSalaryAndJoindedDateAsync()
         {
-            var employees = await _employeeService.GetAllEmployeesWithAndJoindedDateAsync();
+            var employees = await _employeeService.GetAllEmployeesWithSalaryAndJoindedDateAsync();
             return Ok(employees);
         }
     }

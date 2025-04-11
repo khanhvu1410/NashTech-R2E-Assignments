@@ -13,7 +13,7 @@ namespace EfCoreAssignmentDay2.Persistence.Configurations
                 .HasColumnType("decimal(18,2)");
 
             builder.HasOne(s => s.Employee)
-                .WithOne(e => e.Salary)
+                .WithOne(e => e.Salaries)
                 .HasForeignKey<Salaries>(s => s.EmployeeId)
                 .OnDelete(DeleteBehavior.Cascade);
 

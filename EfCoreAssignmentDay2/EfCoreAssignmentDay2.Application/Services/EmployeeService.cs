@@ -75,19 +75,19 @@ namespace EfCoreAssignmentDay2.Application.Services
             return employeeDto;
         }
 
-        public async Task<IEnumerable<object>> GetAllEmployeesWithAndJoindedDateAsync()
+        public async Task<IEnumerable<object>> GetAllEmployeesWithDepartmentNamesAsync()
         {
-            return await _employeeRepository.GetAllEmployeesWithSalaryAndJoindedDateAsync();
-        }
-
-        public async Task<IEnumerable<object>> GetAllEmployeesWithDepartmentNames()
-        {
-            return await _employeeRepository.GetAllEmployeesAndDepartmentNamesAsync();
+            return await _employeeRepository.GetAllWithDepartmentNamesAsync();
         }
 
         public async Task<IEnumerable<object>> GetAllEmployeesWithProjectsAsync()
         {
-            return await _employeeRepository.GetAllEmployeesAndProjectsAsync();
+            return await _employeeRepository.GetAllWithProjectsAsync();
+        }
+
+        public async Task<IEnumerable<object>> GetAllEmployeesWithSalaryAndJoindedDateAsync()
+        {
+            return await _employeeRepository.GetAllWithSalaryAndJoindedDateAsync();
         }
     }
 }

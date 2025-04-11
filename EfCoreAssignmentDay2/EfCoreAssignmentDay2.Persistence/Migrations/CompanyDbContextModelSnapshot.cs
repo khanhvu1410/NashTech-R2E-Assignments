@@ -99,7 +99,7 @@ namespace EfCoreAssignmentDay2.Persistence.Migrations
                         {
                             Id = 2,
                             DepartmentId = 2,
-                            JoinedDate = new DateTime(2023, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JoinedDate = new DateTime(2024, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Bob"
                         });
                 });
@@ -241,7 +241,7 @@ namespace EfCoreAssignmentDay2.Persistence.Migrations
             modelBuilder.Entity("EfCoreAssignmentDay2.Domain.Entities.Salaries", b =>
                 {
                     b.HasOne("EfCoreAssignmentDay2.Domain.Entities.Employee", "Employee")
-                        .WithOne("Salary")
+                        .WithOne("Salaries")
                         .HasForeignKey("EfCoreAssignmentDay2.Domain.Entities.Salaries", "EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -258,7 +258,7 @@ namespace EfCoreAssignmentDay2.Persistence.Migrations
                 {
                     b.Navigation("ProjectEmployees");
 
-                    b.Navigation("Salary");
+                    b.Navigation("Salaries");
                 });
 
             modelBuilder.Entity("EfCoreAssignmentDay2.Domain.Entities.Project", b =>

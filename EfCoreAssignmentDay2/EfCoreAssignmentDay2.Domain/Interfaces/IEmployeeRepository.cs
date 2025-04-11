@@ -2,22 +2,12 @@
 
 namespace EfCoreAssignmentDay2.Domain.Interfaces
 {
-    public interface IEmployeeRepository
+    public interface IEmployeeRepository : IBaseRepository<Employee>
     {
-        Task<IEnumerable<Employee>> GetAllAsync();
+        public Task<IEnumerable<object>> GetAllWithDepartmentNamesAsync();
 
-        Task<Employee?> GetByIdAsync(int id);
+        public Task<IEnumerable<object>> GetAllWithProjectsAsync();
 
-        Task AddAsync(Employee entity);
-
-        Task UpdateAsync(Employee entity);
-
-        Task DeleteAsync(int id);
-
-        public Task<IEnumerable<object>> GetAllEmployeesAndDepartmentNamesAsync();
-
-        public Task<IEnumerable<object>> GetAllEmployeesAndProjectsAsync();
-
-        public Task<IEnumerable<object>> GetAllEmployeesWithSalaryAndJoindedDateAsync();
+        public Task<IEnumerable<object>> GetAllWithSalaryAndJoindedDateAsync();
     }
 }

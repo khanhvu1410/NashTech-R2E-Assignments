@@ -35,7 +35,7 @@ namespace EfCoreAssignmentDay2.Application.Services
                 throw new KeyNotFoundException($"Employee with ID {projectEmployeeDto.EmployeeId} was not found.");
             }
 
-            var exisitingProjectEmployee = await _projectEmployeeRepository.GetByIdsAsync(projectEmployeeDto.ProjectId, projectEmployeeDto.EmployeeId);
+            var exisitingProjectEmployee = await _projectEmployeeRepository.GetByIdAsync(projectEmployeeDto.ProjectId, projectEmployeeDto.EmployeeId);
 
             if (exisitingProjectEmployee != null)
             {
@@ -49,7 +49,7 @@ namespace EfCoreAssignmentDay2.Application.Services
 
         public async Task DeleteProjectEmployeeAsync(int projectId, int employeeId)
         {
-            var projectEmployees = await _projectEmployeeRepository.GetByIdsAsync(projectId, employeeId);
+            var projectEmployees = await _projectEmployeeRepository.GetByIdAsync(projectId, employeeId);
 
             if (projectEmployees == null)
             {
@@ -67,7 +67,7 @@ namespace EfCoreAssignmentDay2.Application.Services
 
         public async Task<ProjectEmployeeDTO> GetProjectEmployeeByIdAsync(int projectId, int employeeId)
         {
-            var projectEmployee = await _projectEmployeeRepository.GetByIdsAsync(projectId, employeeId);
+            var projectEmployee = await _projectEmployeeRepository.GetByIdAsync(projectId, employeeId);
 
             if (projectEmployee == null)
             {
@@ -91,7 +91,7 @@ namespace EfCoreAssignmentDay2.Application.Services
                 throw new KeyNotFoundException($"Employee with ID {projectEmployeeDto.EmployeeId} was not found.");
             }
 
-            var projectEmployee = await _projectEmployeeRepository.GetByIdsAsync(projectEmployeeDto.ProjectId, projectEmployeeDto.EmployeeId) ?? throw new KeyNotFoundException($"ProjectEmployee with ProjectId = {projectEmployeeDto.ProjectId} and EmployeeId = {projectEmployeeDto.EmployeeId} was not found.");
+            var projectEmployee = await _projectEmployeeRepository.GetByIdAsync(projectEmployeeDto.ProjectId, projectEmployeeDto.EmployeeId) ?? throw new KeyNotFoundException($"ProjectEmployee with ProjectId = {projectEmployeeDto.ProjectId} and EmployeeId = {projectEmployeeDto.EmployeeId} was not found.");
 
             await _projectEmployeeRepository.UpdateAsync(projectEmployee);
             return projectEmployeeDto;

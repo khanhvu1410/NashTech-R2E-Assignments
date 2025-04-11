@@ -21,10 +21,8 @@ namespace EfCoreAssignmentDay2.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddScoped<IBaseRepository<Department>, BaseRepository<Department>>();
-            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            builder.Services.AddScoped<IBaseRepository<Salaries>, BaseRepository<Salaries>>();
-            builder.Services.AddScoped<IBaseRepository<Project>, BaseRepository<Project>>();
+            builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            builder.Services.AddScoped<IEmployeeRepository,  EmployeeRepository>();
             builder.Services.AddScoped<IProjectEmployeeRepository, ProjectEmployeeRepository>();
 
             builder.Services.AddScoped<IDepartmentService, DepartmentService>();

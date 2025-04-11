@@ -10,7 +10,7 @@
 
         public int DepartmentId { get; set; }
 
-        public Salaries? Salary { get; set; }
+        public Salaries? Salaries { get; set; }
 
         public Department? Department { get; set; }
 

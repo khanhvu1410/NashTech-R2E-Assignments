@@ -4,48 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreAssignmentDay2.Persistence.Repositories
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
-        private readonly CompanyDbContext _context;
-
-        public EmployeeRepository(CompanyDbContext context)
+        public EmployeeRepository(CompanyDbContext context) : base(context)
         {
-            _context = context;
         }
 
-        public async Task AddAsync(Employee employee)
-        {
-            await _context.Employees.AddAsync(employee);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task UpdateAsync(Employee employee)
-        {
-            _context.Employees.Update(employee);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task<IEnumerable<Employee>> GetAllAsync()
-        {
-            return await _context.Employees.ToListAsync();
-        }
-
-        public async Task<Employee?> GetByIdAsync(int id)
-        {
-            return await _context.Employees.FindAsync(id);
-        }
-
-        public async Task DeleteAsync(int id)
-        {
-            var employee = await GetByIdAsync(id);
-            if (employee != null)
-            {
-                _context.Employees.Remove(employee);
-                await _context.SaveChangesAsync();
-            }
-        }
-
-        public async Task<IEnumerable<object>> GetAllEmployeesAndDepartmentNamesAsync()
+        public async Task<IEnumerable<object>> GetAllWithDepartmentNamesAsync()
         {
             return await _context.Employees.Include(e => e.Department).Select(e => new
             {
@@ -56,7 +21,7 @@ namespace EfCoreAssignmentDay2.Persistence.Repositories
             }).ToListAsync();
         }
 
-        public async Task<IEnumerable<object>> GetAllEmployeesAndProjectsAsync()
+        public async Task<IEnumerable<object>> GetAllWithProjectsAsync()
         {
             return await _context.Employees.Include(e => e.ProjectEmployees).Select(e => new
             {
@@ -67,16 +32,16 @@ namespace EfCoreAssignmentDay2.Persistence.Repositories
             }).ToListAsync();
         }
 
-        public async Task<IEnumerable<object>> GetAllEmployeesWithSalaryAndJoindedDateAsync()
+        public async Task<IEnumerable<object>> GetAllWithSalaryAndJoindedDateAsync()
         {
-            return await _context.Employees.Include(e => e.Salary)
-                .Where(e => e.Salary!.Salary > 100 && e.JoinedDate >= new DateTime(2024, 1, 1))
+            return await _context.Employees.Include(e => e.Salaries)
+                .Where(e => e.Salaries!.Salary > 100 && e.JoinedDate >= new DateTime(2024, 1, 1))
                 .Select(e => new
             {
                 e.Id, 
                 e.Name,
                 e.JoinedDate,
-                e.Salary!.Salary
+                e.Salaries!.Salary
             }).ToListAsync();
         }
     }

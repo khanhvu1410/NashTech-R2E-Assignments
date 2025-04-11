@@ -22,7 +22,7 @@ namespace EfCoreAssignmentDay2.Persistence.Configurations
 
             builder.HasData(
                 new Employee { Id = 1, Name = "Alice", JoinedDate = new DateTime(2022, 1, 10), DepartmentId = 1 },
-                new Employee { Id = 2, Name = "Bob", JoinedDate = new DateTime(2023, 5, 20), DepartmentId = 2 }
+                new Employee { Id = 2, Name = "Bob", JoinedDate = new DateTime(2024, 5, 20), DepartmentId = 2 }
             );
         }
     }
