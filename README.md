@@ -110,13 +110,17 @@ cd PersonApiAssignment/Presentation/PersonApiAssignment.Api
 ```sh
 cd EfCoreAssignmentDay1
 ```
+**For EF Core Assignment Day 2:**
+```sh
+cd EfCoreAssignmentDay2/EfCoreAssignmentDay2.Api
+```
 
 ### Step 3: Run the application 
 Inside the respective folder, execute:
 ```sh
 dotnet run
 ```
-**For EF Core Assignment Day 1:**
+**For EF Core Assignment Day 1 (2):**
 - Change connection string in appsettings.json:
 ```json
 "ConnectionStrings": {
