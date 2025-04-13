@@ -4,10 +4,10 @@ namespace EfCoreAssignmentDay2.Domain.Interfaces
 {
     public interface IEmployeeRepository : IBaseRepository<Employee>
     {
-        public Task<IEnumerable<object>> GetAllWithDepartmentNamesAsync();
+        public Task<IEnumerable<Employee>> GetAllWithDepartmentsAsync();
 
-        public Task<IEnumerable<object>> GetAllWithProjectsAsync();
+        public Task<IEnumerable<Employee>> GetAllWithProjectsAsync();
 
-        public Task<IEnumerable<object>> GetAllWithSalaryAndJoindedDateAsync();
+        public Task<IEnumerable<Employee>> GetAllWithSalariesAsync();
     }
 }

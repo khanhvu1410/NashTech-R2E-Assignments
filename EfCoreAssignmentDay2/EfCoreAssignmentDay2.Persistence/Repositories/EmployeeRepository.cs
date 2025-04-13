@@ -10,39 +10,26 @@ namespace EfCoreAssignmentDay2.Persistence.Repositories
         {
         }
 
-        public async Task<IEnumerable<object>> GetAllWithDepartmentNamesAsync()
+        public async Task<IEnumerable<Employee>> GetAllWithDepartmentsAsync()
         {
-            return await _context.Employees.Include(e => e.Department).Select(e => new
-            {
-                e.Id, 
-                e.Name,
-                e.JoinedDate,
-                DepartmentName = e.Department!.Name
-            }).ToListAsync();
+            return await _context.Employees
+                .Include(e => e.Department)
+                .ToListAsync();
         }
 
-        public async Task<IEnumerable<object>> GetAllWithProjectsAsync()
+        public async Task<IEnumerable<Employee>> GetAllWithProjectsAsync()
         {
-            return await _context.Employees.Include(e => e.ProjectEmployees).Select(e => new
-            {
-                e.Id,
-                e.Name,
-                e.JoinedDate,
-                Projects = e.ProjectEmployees
-            }).ToListAsync();
+            return await _context.Employees
+                .Include(e => e.ProjectEmployees)
+                    .ThenInclude(pe => pe.Project)
+                .ToListAsync();
         }
 
-        public async Task<IEnumerable<object>> GetAllWithSalaryAndJoindedDateAsync()
+        public async Task<IEnumerable<Employee>> GetAllWithSalariesAsync()
         {
-            return await _context.Employees.Include(e => e.Salaries)
-                .Where(e => e.Salaries!.Salary > 100 && e.JoinedDate >= new DateTime(2024, 1, 1))
-                .Select(e => new
-            {
-                e.Id, 
-                e.Name,
-                e.JoinedDate,
-                e.Salaries!.Salary
-            }).ToListAsync();
+            return await _context.Employees
+                .Include(e => e.Salaries)
+                .ToListAsync();
         }
     }
 }

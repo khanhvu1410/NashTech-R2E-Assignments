@@ -75,19 +75,47 @@ namespace EfCoreAssignmentDay2.Application.Services
             return employeeDto;
         }
 
-        public async Task<IEnumerable<object>> GetAllEmployeesWithDepartmentNamesAsync()
+        public async Task<IEnumerable<EmployeeDepartmentDTO>> GetAllEmployeesWithDepartmentNamesAsync()
         {
-            return await _employeeRepository.GetAllWithDepartmentNamesAsync();
+            var employees = await _employeeRepository.GetAllWithDepartmentsAsync();
+            return employees
+                .Select(e => new EmployeeDepartmentDTO
+            { 
+                Id = e.Id,
+                Name = e.Name,
+                JoinedDate = e.JoinedDate,
+                DepartmentName = e.Department?.Name
+            });
         }
 
-        public async Task<IEnumerable<object>> GetAllEmployeesWithProjectsAsync()
+        public async Task<IEnumerable<EmployeeProjectDTO>> GetAllEmployeesWithProjectsAsync()
         {
-            return await _employeeRepository.GetAllWithProjectsAsync();
+            var employees = await _employeeRepository.GetAllWithProjectsAsync();
+            return employees
+                .Select(e => new EmployeeProjectDTO
+            {
+                Id = e.Id,
+                Name = e.Name,
+                JoinedDate = e.JoinedDate,
+                ProjectNames = e.ProjectEmployees?
+                    .Select(pe => pe.Project!.Name)
+                    .ToList()
+            });
         }
 
-        public async Task<IEnumerable<object>> GetAllEmployeesWithSalaryAndJoindedDateAsync()
+        public async Task<IEnumerable<EmployeeSalaryDTO>> GetAllEmployeesWithSalaryAndJoindedDateAsync()
         {
-            return await _employeeRepository.GetAllWithSalaryAndJoindedDateAsync();
+            var employees = await _employeeRepository.GetAllWithSalariesAsync();
+            return employees
+                .Where(e => e.Salaries != null)
+                .Where(e => e.Salaries!.Salary > 100 && e.JoinedDate >= new DateTime(2024, 1, 1))
+                .Select(e => new EmployeeSalaryDTO
+            {
+                Id = e.Id,
+                Name = e.Name,
+                JoinedDate = e.JoinedDate,
+                Salary = e.Salaries!.Salary
+            });
         }
     }
 }
