@@ -1,4 +1,5 @@
 ﻿using MvcAssignment.Shared.DTOs;
+using MvcAssignment.Shared.Enums;
 
 namespace MvcAssignment.Business.Interfaces
 {
@@ -12,11 +13,7 @@ namespace MvcAssignment.Business.Interfaces
 
         public List<string> GetFullnames();
 
-        public List<PersonDTO> GetMembersByBirthYear(int year);
-
-        public List<PersonDTO> GetMembersByBirthYearGreater(int year);
-
-        public List<PersonDTO> GetMembersByBirthYearLess(int year);
+        public List<PersonDTO> GetMembersByBirthYear(Option option, int year);
 
         public MemoryStream WriteMembersToExcel();
 

@@ -1,4 +1,4 @@
-﻿namespace MvcAssignment.Web.Enums
+﻿namespace MvcAssignment.Shared.Enums
 {
     public enum Option
     {

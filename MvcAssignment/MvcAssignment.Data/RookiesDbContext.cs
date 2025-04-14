@@ -13,11 +13,11 @@ namespace MvcAssignment.Data
                 FirstName = "Khánh",
                 LastName = "Vũ",
                 Gender = Gender.Male,
-                DateOfBirth = DateTime.Parse("2003-10-14"),
+                DateOfBirth = new DateTime(2003, 10, 14),
                 PhoneNumber = "0928492950",
                 BirthPlace = "Hà Nội",
                 IsGraduated = false,
-                CreatedDate = DateTime.Parse("2025-04-01")
+                CreatedDate = new DateTime(2025, 04, 01)
             },
             new Person
             {
@@ -25,11 +25,11 @@ namespace MvcAssignment.Data
                 FirstName = "Văn Chiến",
                 LastName = "Thái",
                 Gender = Gender.Male,
-                DateOfBirth = DateTime.Parse("2003-07-29"),
+                DateOfBirth = new DateTime(2003, 07, 29),
                 PhoneNumber = "0928492123",
                 BirthPlace = "Hà Nội",
                 IsGraduated = false,
-                CreatedDate= DateTime.Parse("2025-04-01")
+                CreatedDate = new DateTime(2025, 04, 01)
             },
             new Person
             {
@@ -37,11 +37,11 @@ namespace MvcAssignment.Data
                 FirstName = "Hồng Giang",
                 LastName = "Nguyễn",
                 Gender = Gender.Female,
-                DateOfBirth = DateTime.Parse("2003-05-22"),
+                DateOfBirth = new DateTime(2003, 05, 22),
                 PhoneNumber = "0921292950",
                 BirthPlace = "Bắc Ninh",
                 IsGraduated = false,
-                CreatedDate= DateTime.Parse("2025-04-01")
+                CreatedDate = new DateTime(2025, 04, 01)
             },
             new Person
             {
@@ -49,11 +49,11 @@ namespace MvcAssignment.Data
                 FirstName = "Đức Lâm",
                 LastName = "Trần",
                 Gender = Gender.Male,
-                DateOfBirth = DateTime.Parse("1993-03-22"),
+                DateOfBirth = new DateTime(1993, 03, 22),
                 PhoneNumber = "0921212950",
                 BirthPlace = "Nam Định",
                 IsGraduated = true,
-                CreatedDate= DateTime.Parse("2025-04-01")
+                CreatedDate = new DateTime(2025, 04, 01)
             },
             new Person
             {
@@ -61,11 +61,11 @@ namespace MvcAssignment.Data
                 FirstName = "Thùy Linh",
                 LastName = "Trần",
                 Gender = Gender.Female,
-                DateOfBirth = DateTime.Parse("2000-01-25"),
+                DateOfBirth = new DateTime(2000, 01, 25),
                 PhoneNumber = "0921222950",
                 BirthPlace = "Thái Bình",
                 IsGraduated = true,
-                CreatedDate= DateTime.Parse("2025-04-01")
+                CreatedDate = new DateTime(2025, 04, 01)
             }
         ];
 

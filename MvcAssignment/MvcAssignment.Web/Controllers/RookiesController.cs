@@ -3,11 +3,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using MvcAssignment.Business.Interfaces;
 using MvcAssignment.Shared.DTOs;
 using MvcAssignment.Shared.Enums;
-using MvcAssignment.Web.Enums;
 
 namespace MvcAssignment.Web.Controllers
 {
-    public class RookiesController : Controller
+    public class RookiesController : CustomBaseController
     {
         private readonly IPersonService _personService;
 
@@ -31,46 +30,30 @@ namespace MvcAssignment.Web.Controllers
 
         public IActionResult GetOldestRookie()
         {
-            try
+            return SafeExecute(() =>
             {
-                var rookies = _personService.GetOldestMember();
-                return View(rookies);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return View("RookiesNotFound", ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return View("RookiesError", ex.Message);
-            }
+                var rookie = _personService.GetOldestMember();
+                return rookie;
+            }, nameof(GetOldestRookie));
         }
 
         public IActionResult GetFullnames()
         {
-            try
+            return SafeExecute(() =>
             {
                 var fullnames = _personService.GetFullnames();
-                return View(fullnames);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return View("RookiesNotFound", ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return View("RookiesError", ex.Message);
-            }
+                return fullnames;
+            }, nameof(GetFullnames));
         }
 
         public IActionResult RedirectBasedOnOption(Option option, int year)
         {
             var actionName = option switch
             {
-                Option.Equal => "GetRookiesByBirthYear",
-                Option.Greater => "GetRookiesByBirthYearGreater",
-                Option.Less => "GetRookiesByBirthYearLess",
-                _ => "GetRookiesByBirthYear"
+                Option.Equal => nameof(GetRookiesByBirthYear),
+                Option.Greater => nameof(GetRookiesByBirthYearGreater),
+                Option.Less => nameof(GetRookiesByBirthYearLess),
+                _ => nameof(GetRookiesByBirthYear)
             };
 
             return RedirectToAction(actionName, new { year });
@@ -78,37 +61,29 @@ namespace MvcAssignment.Web.Controllers
 
         public IActionResult GetRookiesByBirthYear(int year)
         {
-            var rookies = _personService.GetMembersByBirthYear(year);
+            var rookies = _personService.GetMembersByBirthYear(Option.Equal, year);
             return View("Index", rookies);
         }
 
         public IActionResult GetRookiesByBirthYearGreater(int year)
         {
-            var rookies = _personService.GetMembersByBirthYearGreater(year);
+            var rookies = _personService.GetMembersByBirthYear(Option.Greater, year);
             return View("Index", rookies);
         }
 
         public IActionResult GetRookiesByBirthYearLess(int year)
         {
-            var rookies = _personService.GetMembersByBirthYearLess(year);
+            var rookies = _personService.GetMembersByBirthYear(Option.Less, year);
             return View("Index", rookies);
         }
 
-        public IActionResult DownloadRookiesExcel()
+        public IActionResult ExportExcel()
         {
-            try
+            return SafeFileExecute(() =>
             {
                 var result = _personService.WriteMembersToExcel();
-                return File(result, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Rookies.xlsx");
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return View("RookiesNotFound", ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return View("RookiesError", ex.Message);
-            }
+                return result;
+            }, "Rookies.xlsx");
         }
 
         public IActionResult CreateNewRookie()
@@ -165,37 +140,21 @@ namespace MvcAssignment.Web.Controllers
 
         public IActionResult GetRookieDetails(int id)
         {
-            try
+            return SafeExecute(() =>
             {
                 var rookie = _personService.GetMemberById(id);
-                return View(rookie);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return View("RookiesNotFound", ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return View("RookiesError", ex.Message);
-            }
+                return rookie;
+            }, nameof(GetRookieDetails));
         }
 
         public IActionResult DeleteRookie(int id, string name)
         {
-            try
+            return SafeExecute(() =>
             {
                 _personService.DeleteMember(id);
                 var message = $"Person {name} was removed from the list successfully!";
-                return View("RookiesSuccess", message);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return View("RookiesNotFound", ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return View("RookiesError", ex.Message);
-            }
+                return message;
+            }, "RookiesSuccess");
         }
     }
 }

@@ -9,6 +9,7 @@ This repository contains a collection of assignments completed as part of the Ro
 - ASP.NET Core MVC
 - ASP.NET Core Web API
 - Entity Framework Core
+- Unit Testing with NUnit
 
 ## Architectures used in assignments
 
@@ -95,7 +96,15 @@ cd AssignmentDay2/AssignmentDay2
 ```sh
 cd MiddlewareAssignment/MiddlewareAssignment
 ```
-**For ASP.NET Core MVC Assignment:**
+**For ASP.NET Core MVC Assignment and Unit Testing Assignment:**
+```sh
+cd MvcAssignment
+```
+- To run all unit tests:
+```sh
+dotnet test
+```
+- Test the web application:
 ```sh
 cd MvcAssignment/MvcAssignment.Web
 ```

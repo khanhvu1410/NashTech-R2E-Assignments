@@ -3,7 +3,6 @@ using MvcAssignment.Shared.Enums;
 using MvcAssignment.Data.Interfaces;
 using OfficeOpenXml;
 using MvcAssignment.Shared.DTOs;
-using MvcAssignment.Data.Models;
 
 namespace MvcAssignment.Business.Services
 {
@@ -21,8 +20,7 @@ namespace MvcAssignment.Business.Services
             var persons = _personRepository.GetAll().Select(p => p.ToPersonDTO()).ToList();
 
             return persons;
-        }
-        
+        }        
 
         public List<PersonDTO> GetMaleMembers()
         {
@@ -32,7 +30,6 @@ namespace MvcAssignment.Business.Services
 
             return maleMemebers;
         }
-
 
         public PersonDTO GetOldestMember()
         {
@@ -60,32 +57,15 @@ namespace MvcAssignment.Business.Services
             return fullnames;
         } 
 
-
-        public List<PersonDTO> GetMembersByBirthYear(int year)
+        public List<PersonDTO> GetMembersByBirthYear(Option option, int year)
         {
-            var persons = _personRepository.GetAll().Where(p => p.DateOfBirth.Year == year);
-            
-            var result = persons.Select(p => p.ToPersonDTO()).ToList();
-            
-            return result;
-        }
-
-        public List<PersonDTO> GetMembersByBirthYearGreater(int year)
-        {
-            var persons = _personRepository.GetAll().Where(p => p.DateOfBirth.Year > year);
-            
-            var result = persons.Select(p => p.ToPersonDTO()).ToList();          
-            
-            return result;
-        }
-        
-        public List<PersonDTO> GetMembersByBirthYearLess(int year)
-        {
-            var persons = _personRepository.GetAll().Where(p => p.DateOfBirth.Year < year);
-            
-            var result = persons.Select(p => p.ToPersonDTO()).ToList();         
-            
-            return result;
+            return option switch
+            {
+                Option.Equal => _personRepository.GetAll().Where(p => p.DateOfBirth.Year == year).Select(p => p.ToPersonDTO()).ToList(),
+                Option.Greater => _personRepository.GetAll().Where(p => p.DateOfBirth.Year > year).Select(p => p.ToPersonDTO()).ToList(),
+                Option.Less => _personRepository.GetAll().Where(p => p.DateOfBirth.Year < year).Select(p => p.ToPersonDTO()).ToList(),
+                _ => _personRepository.GetAll().Where(p => p.DateOfBirth.Year == year).Select(p => p.ToPersonDTO()).ToList()
+            };
         }
 
         public MemoryStream WriteMembersToExcel()
@@ -131,19 +111,8 @@ namespace MvcAssignment.Business.Services
         {
             var persons = _personRepository.GetAll();
             var id = persons.Count == 0 ? 1 : persons.Max(p => p.Id) + 1;
-            
-            var person = new Person
-            {
-                Id = id,
-                FirstName = personDto.FirstName,
-                LastName = personDto.LastName,
-                Gender = personDto.Gender,
-                DateOfBirth = personDto.DateOfBirth,
-                PhoneNumber = personDto.PhoneNumber,
-                BirthPlace = personDto.BirthPlace,
-                IsGraduated = personDto.IsGraduated,
-                CreatedDate = DateTime.Now,
-            };
+
+            var person = personDto.ToPerson(id);
 
             return _personRepository.Create(person).ToPersonDTO();
         }
@@ -157,18 +126,7 @@ namespace MvcAssignment.Business.Services
                 throw new KeyNotFoundException($"No person with ID {personDto.Id} found.");
             }
 
-            var person = new Person
-            {
-                Id = personDto.Id,
-                FirstName = personDto.FirstName,
-                LastName = personDto.LastName,
-                Gender = personDto.Gender,
-                DateOfBirth= personDto.DateOfBirth,
-                PhoneNumber = personDto.PhoneNumber,
-                BirthPlace = personDto.BirthPlace,
-                IsGraduated = personDto.IsGraduated,
-                UpdatedDate = DateTime.Now,
-            };
+            var person = personDto.ToPerson();
             
             return _personRepository.Update(person).ToPersonDTO();
         }

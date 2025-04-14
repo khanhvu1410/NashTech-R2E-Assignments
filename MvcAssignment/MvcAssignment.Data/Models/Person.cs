@@ -26,20 +26,5 @@ namespace MvcAssignment.Data.Models
         public DateTime UpdatedDate { get; set; }
 
         public DateTime DeletedDate {  get; set; }
-
-        public PersonDTO ToPersonDTO()
-        {
-            return new PersonDTO
-            {
-                Id = Id,
-                FirstName = FirstName,
-                LastName = LastName,
-                Gender = Gender,
-                DateOfBirth = DateOfBirth,
-                PhoneNumber = PhoneNumber,
-                BirthPlace = BirthPlace,
-                IsGraduated = IsGraduated,
-            };
-        }
     }
 }
