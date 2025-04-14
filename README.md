@@ -118,13 +118,13 @@ cd PersonApiAssignment/Presentation/PersonApiAssignment.Api
 ```sh
 cd EfCoreAssignmentDay1
 ```
-- Change connection string in appsettings.json:
+- Update appsettings.json with your SQL Server connection string:
 ```json
 "ConnectionStrings": {
   "EFCoreDBConnection": "Server=YourSQLServerName;Database=EfCoreAssignment;Trusted_Connection=True;TrustServerCertificate=True;"
 }
 ```
-- Update database:
+- Apply migrations:
 ```sh
 dotnet ef database update --project Infrastructure/EfCoreAssignmentDay1.Persistence --startup-project Presentation/EfCoreAssignmentDay1.Api
 ```
@@ -132,7 +132,7 @@ dotnet ef database update --project Infrastructure/EfCoreAssignmentDay1.Persiste
 ```sh
 cd EfCoreAssignmentDay2
 ```
-- Update database:
+- Apply migrations:
 ```sh
 dotnet ef database update --project EfCoreAssignmentDay2.Persistence --startup-project EfCoreAssignmentDay2.Api
 ```
