@@ -72,51 +72,49 @@ PersonApiAssignment
 ## How to run the assignments
 
 ### Step 1: Clone the repository  
-Open a terminal or command prompt and run the following command:
+Open a terminal and run:
 ```sh
 git clone https://github.com/khanhvu1410/NashTech-R2E-Assignments.git
-```
-Navigate to the root folder:
-```sh
 cd NashTech-R2E-Assignments
 ```
 
 ### Step 2: Navigate to the desired assignment
-**For C# Fundamentals Assignment Day 1:**
+**C# Fundamentals Assignment**
+- Day 1:
 ```sh
 cd AssignmentDay1/AssignmentDay1
 ```
-**For C# Fundamentals Assignment Day 2:**
+- Day 2:
 ```sh
 cd AssignmentDay2/AssignmentDay2
 ```
-**For ASP.NET Core Fundamentals Middleware Assignment:**
+**ASP.NET Core Fundamentals Middleware Assignment**
 - Ensure that you provide a valid endpoint to process HTTP requests and generate logs in logs.txt
 - Example: http://localhost:5110/Cars/FilterByModel?model=Mustang
 ```sh
 cd MiddlewareAssignment/MiddlewareAssignment
 ```
-**For ASP.NET Core MVC Assignment and Unit Testing Assignment:**
+**ASP.NET Core MVC & Unit Testing Assignment**
 ```sh
 cd MvcAssignment
 ```
-- To run all unit tests:
+- To run unit tests:
 ```sh
 dotnet test
 ```
-- Test the web application:
+- To run the MVC app:
 ```sh
 cd MvcAssignment/MvcAssignment.Web
 ```
-**For ToDo API Assignment:**
+**ToDo API Assignment**
 ```sh
 cd ToDoApiAssignment/Presentation/ToDoApiAssignment.Api
 ```
-**For Person API Assignment:**
+**Person API Assignment**
 ```sh
 cd PersonApiAssignment/Presentation/PersonApiAssignment.Api
 ```
-**For EF Core Assignment Day 1:**
+**EF Core Assignment Day 1**
 ```sh
 cd EfCoreAssignmentDay1
 ```
@@ -130,7 +128,7 @@ cd EfCoreAssignmentDay1
 ```sh
 dotnet ef database update --project Infrastructure/EfCoreAssignmentDay1.Persistence --startup-project Presentation/EfCoreAssignmentDay1.Api
 ```
-**For EF Core Assignment Day 2:**
+**EF Core Assignment Day 2**
 ```sh
 cd EfCoreAssignmentDay2
 ```
@@ -144,8 +142,7 @@ cd EfCoreAssignmentDay2.Api
 ```
 
 ### Step 3: Run the application 
-Inside the respective folder, execute:
+From the assignment's root directory:
 ```sh
 dotnet run
 ```
-
